@@ -1,12 +1,15 @@
 package com.ishan.service;
 
 import com.ishan.repository.OwnerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OwnerServiceImpl implements OwnerService{
 
     private final OwnerRepository ownerRepository;
 
-    public OwnerServiceImpl(OwnerRepository ownerRepository){
+    public OwnerServiceImpl(@Autowired OwnerRepository ownerRepository){
         System.out.println("OwnerService bean created");
         this.ownerRepository = ownerRepository;
     }

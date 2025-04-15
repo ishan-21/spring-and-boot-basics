@@ -6,18 +6,12 @@ import com.ishan.service.OwnerService;
 import com.ishan.service.OwnerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 @Configuration
+@ComponentScan(basePackages = "com.ishan")
 public class AppConfiguration {
 
-    @Bean
-    public OwnerRepository ownerRepository(){
-        return new OwnerRepositoryImpl();
-    }
-
-    @Bean
-    public OwnerService ownerService(@Autowired OwnerRepository ownerRepository){
-        return new OwnerServiceImpl(ownerRepository);
-    }
 }

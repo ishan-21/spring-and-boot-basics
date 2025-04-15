@@ -1,5 +1,8 @@
 package com.ishan.repository;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class OwnerRepositoryImpl implements OwnerRepository{
 
     public OwnerRepositoryImpl(){
