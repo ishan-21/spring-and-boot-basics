@@ -4,7 +4,7 @@ import com.ishan.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("OwnerServiceImpl")
 public class OwnerServiceImpl implements OwnerService{
 
     private final OwnerRepository ownerRepository;

@@ -14,9 +14,12 @@ public class App
     {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
         // Get the OwnerService bean from the application context
-        OwnerService ownerService = applicationContext.getBean(OwnerService.class);
+        OwnerService ownerService = applicationContext.getBean("OwnerServiceImpl",OwnerService.class);
         String result = ownerService.findOwner(SAMPLE_OWNER_ID);
         System.out.println(result);
+        OwnerService ownerServiceNoSql = applicationContext.getBean("OwnerServiceImplNoSql",OwnerService.class);
+        String resultNoSql = ownerServiceNoSql.findOwner(SAMPLE_OWNER_ID);
+        System.out.println(resultNoSql);
         ((AnnotationConfigApplicationContext)applicationContext).close();
     }
 }

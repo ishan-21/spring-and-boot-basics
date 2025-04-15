@@ -1,8 +1,10 @@
 package com.ishan.repository;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("OwnerRepositoryImpl")
+@Primary // this denotes that this will the default bean to be injected for any OwnerRepository type
 public class OwnerRepositoryImpl implements OwnerRepository{
 
     public OwnerRepositoryImpl(){
