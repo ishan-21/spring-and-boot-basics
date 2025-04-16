@@ -1,12 +1,11 @@
 package com.ishan.spring_boot_application;
 
 import com.ishan.spring_boot_application.service.OwnerService;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootApplication(scanBasePackages = "com.ishan.spring_boot_application")
 // @SpringBootApplication is a combination of @Configuration, @EnableAutoConfiguration, and @ComponentScan
@@ -14,6 +13,8 @@ public class Application implements CommandLineRunner {
 
 	public static final int SAMPLE_OWNER_ID_ODD = 1;
 	public static final int SAMPLE_OWNER_ID_EVEN = 2;
+	private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(Application.class);
+	// why use logger? because console messages through out.println() are not recommended in production code as they can't be read on server where console output is not available
 
 	// now third party beans can be configured here itself using the @Bean annotation
 
@@ -33,6 +34,13 @@ public class Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		String result = ownerService.findOwner(SAMPLE_OWNER_ID_EVEN);
-		System.out.println(result);
+		LOGGER.info(result);
+		try{
+			// this will throw an exception
+			result = ownerService.findOwner(SAMPLE_OWNER_ID_ODD);
+			LOGGER.info(result);
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+		}
 	}
 }
