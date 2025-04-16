@@ -1,5 +1,6 @@
 package com.ishan.spring_boot_application.service;
 
+import com.ishan.spring_boot_application.exception.OwnerNotFoundException;
 import com.ishan.spring_boot_application.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public String findOwner(int ownerId) {
+    public String findOwner(int ownerId) throws OwnerNotFoundException {
         return ownerRepository.findOwner(ownerId);
     }
 }

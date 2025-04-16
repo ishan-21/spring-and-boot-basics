@@ -12,7 +12,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 // @SpringBootApplication is a combination of @Configuration, @EnableAutoConfiguration, and @ComponentScan
 public class Application implements CommandLineRunner {
 
-	public static final int SAMPLE_OWNER_ID = 1;
+	public static final int SAMPLE_OWNER_ID_ODD = 1;
+	public static final int SAMPLE_OWNER_ID_EVEN = 2;
 
 	// now third party beans can be configured here itself using the @Bean annotation
 
@@ -31,7 +32,7 @@ public class Application implements CommandLineRunner {
 	// the run method here is internally called by Spring Boot inside the SpringApplication.run method
 	@Override
 	public void run(String... args) throws Exception {
-		String result = ownerService.findOwner(SAMPLE_OWNER_ID);
+		String result = ownerService.findOwner(SAMPLE_OWNER_ID_EVEN);
 		System.out.println(result);
 	}
 }

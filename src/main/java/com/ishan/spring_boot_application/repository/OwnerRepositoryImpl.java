@@ -1,6 +1,6 @@
 package com.ishan.spring_boot_application.repository;
 
-import org.springframework.stereotype.Component;
+import com.ishan.spring_boot_application.exception.OwnerNotFoundException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -11,7 +11,10 @@ public class OwnerRepositoryImpl implements OwnerRepository{
     }
 
     @Override
-    public String findOwner(int ownerId) {
-        return "found owner with id " + ownerId;
+    public String findOwner(int ownerId) throws OwnerNotFoundException {
+        if(ownerId%2 == 0){
+            return "found owner with id " + ownerId;
+        }
+        throw new OwnerNotFoundException("Owner not found with id " + ownerId);
     }
 }

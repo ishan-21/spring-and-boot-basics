@@ -1,6 +1,8 @@
 package com.ishan.spring_boot_application.repository;
 
-public interface OwnerRepository {
+import com.ishan.spring_boot_application.exception.OwnerNotFoundException;
 
-    public String findOwner(int ownerId);
+public interface OwnerRepository{
+
+    public String findOwner(int ownerId) throws OwnerNotFoundException;
 }
