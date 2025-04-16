@@ -12,11 +12,11 @@ public class Application {
 
 	public static final int SAMPLE_OWNER_ID = 1;
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+		ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
 		// Fetching the OwnerService bean from the application context
 		OwnerService ownerService = applicationContext.getBean(OwnerService.class);
 		String result = ownerService.findOwner(SAMPLE_OWNER_ID);
+		((AnnotationConfigApplicationContext)applicationContext).close();
 		System.out.println(result);
 	}
 
