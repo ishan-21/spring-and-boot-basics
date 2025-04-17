@@ -40,7 +40,7 @@ public class Application implements CommandLineRunner {
 			result = ownerService.findOwner(SAMPLE_OWNER_ID_ODD);
 			LOGGER.info(result);
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage());
+			LOGGER.error(e.getMessage(),e);
 		}
 	}
 }
