@@ -5,24 +5,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
-
-@Profile("local")
+@Profile("prod")
 @Repository
-public class OwnerRepositoryImpl implements OwnerRepository{
+public class OwnerRepositoryImplForProd implements OwnerRepository{
 
     @Value("${owner.found}")
     private String ownerFound;
     @Value("${owner.not.found}")
     private String ownerNotFound;
-    public OwnerRepositoryImpl() {
-        System.out.println("OwnerRepositoryImpl bean created");
+    public OwnerRepositoryImplForProd() {
+        System.out.println("OwnerRepositoryImplForProd bean has been created");
     }
 
     @Override
     public String findOwner(int ownerId) throws OwnerNotFoundException {
-        if(ownerId%2 == 0){
-            return ownerFound + ownerId;
-        }
-        throw new OwnerNotFoundException( ownerNotFound + ownerId);
+        return ownerFound + ownerId;
     }
 }
