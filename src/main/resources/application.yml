@@ -1,11 +1,27 @@
 logging:
-    file:
-        name: ${logging.file.path}/${spring.application.name}.log
-        path: logs
-    logback:
-        rollingpolicy:
-            file-name-pattern: ${logging.file.path}/${spring.application.name}-%d{yyyy-MM-dd}-%i.log
-            max-file-size: 10MB
+  file:
+    name: ${logging.file.path}/${spring.application.name}.log
+    path: logs
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${logging.file.path}/${spring.application.name}-%d{yyyy-MM-dd}-%i.log
+      max-file-size: 10MB
 spring:
     application:
-        name: Petistaan
+        name: petistaan
+    datasource:
+        url: jdbc:h2:mem:petistaan
+        username: root
+        password:
+    jpa:
+      hibernate:
+        ddl-auto: update
+    show-sql: true
+# so that the .sql files in resources folder are not executed automatically
+    sql:
+      init:
+        mode: never
+# enable H2 console which can be accessed at /h2-console or http://localhost:8080/h2-console
+    h2:
+      console:
+        enabled: true
