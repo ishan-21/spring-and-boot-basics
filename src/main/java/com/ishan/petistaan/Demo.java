@@ -94,6 +94,7 @@ public class Demo implements CommandLineRunner {
         } catch (Exception exception) {
             LOGGER.error(exception.getMessage(), exception);
         }
+        System.exit(1);
     }
     
 }
